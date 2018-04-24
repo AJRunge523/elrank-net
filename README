@@ -1,0 +1,1 @@
+A simple ranking network for entity linking. Uses pre-computed feature vectors for pairs of entities as training data.
