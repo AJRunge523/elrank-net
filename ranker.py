@@ -15,13 +15,15 @@ class Ranker(nn.Module):
 
         # The layers of the NN
         self.embed_linear = nn.Linear(input_size, hidden_size)
-        self.intermed_layer = nn.Linear(hidden_size, hidden_size)
+        self.dropout1 = nn.Dropout(p=0.2)
+        # self.intermed_layer = nn.Linear(hidden_size, hidden_size)
+        # self.dropout2 = nn.Dropout(p=0.5)
         self.out_layer = nn.Linear(hidden_size, 1)
 
     def forward(self, input):
-        embed = F.relu(self.embed_linear(input))
-        intermed = F.relu(self.intermed_layer(embed))
-        output = self.out_layer(intermed)
+        embed = self.dropout1(F.relu(self.embed_linear(input)))
+        # intermed = self.dropout2(F.relu(self.intermed_layer(embed)))
+        output = self.out_layer(embed)
         return output.squeeze()
 
     def save(self, fname):

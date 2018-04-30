@@ -8,3 +8,4 @@ data/*/*/*
 .ipynb_checkpoints/*
 external_scripts/nonbreaking_prefixes/*
 .DS_Store
+data/*.*
